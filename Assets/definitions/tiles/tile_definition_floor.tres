@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="TileDefinition" load_steps=4 format=3 uid="uid://uyhxuyuvrt0e"]
+
+[ext_resource type="Script" path="res://Src/Map/tile_definition.gd" id="1_rllop"]
+[ext_resource type="Texture2D" uid="uid://dlbhav2vbgukv" path="res://Assets/SuperBulb.png" id="2_m4385"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcqxa"]
+atlas = ExtResource("2_m4385")
+region = Rect2(-0.121886, 47.8503, 24.3776, 24.049)
+
+[resource]
+script = ExtResource("1_rllop")
+texture = SubResource("AtlasTexture_qcqxa")
+color_lit = Color(0.541176, 0, 0.545098, 1)
+color_dark = Color(1, 1, 1, 1)
+is_walkable = true
+is_transparent = true
