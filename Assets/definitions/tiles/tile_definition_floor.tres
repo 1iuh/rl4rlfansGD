@@ -10,7 +10,7 @@ region = Rect2(-0.121886, 47.8503, 24.3776, 24.049)
 [resource]
 script = ExtResource("1_rllop")
 texture = SubResource("AtlasTexture_qcqxa")
-color_lit = Color(0.541176, 0, 0.545098, 1)
-color_dark = Color(1, 1, 1, 1)
+color_lit = Color(1, 1, 1, 1)
+color_dark = Color(0.113725, 0.172549, 0.392157, 1)
 is_walkable = true
 is_transparent = true

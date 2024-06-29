@@ -11,6 +11,6 @@ region = Rect2(-0.243973, 23.756, 24.8913, 24.0532)
 script = ExtResource("1_ckr2a")
 texture = SubResource("AtlasTexture_op4y1")
 color_lit = Color(1, 1, 1, 1)
-color_dark = Color(1, 1, 1, 1)
+color_dark = Color(0.115327, 0.174386, 0.394031, 1)
 is_walkable = false
 is_transparent = false

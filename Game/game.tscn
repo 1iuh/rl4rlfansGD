@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://8emh2k4favtv"]
+[gd_scene load_steps=6 format=3 uid="uid://8emh2k4favtv"]
 
 [ext_resource type="Script" path="res://Game/game.gd" id="1_w664i"]
 [ext_resource type="Script" path="res://Src/Map/map.gd" id="3_h1hry"]
 [ext_resource type="Script" path="res://Game/event_handler.gd" id="3_mmuti"]
 [ext_resource type="Script" path="res://Src/Map/dungeon_generator.gd" id="4_hayen"]
+[ext_resource type="Script" path="res://Src/Map/field_of_view.gd" id="5_myaq4"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_w664i")
@@ -16,6 +17,9 @@ script = ExtResource("3_h1hry")
 
 [node name="DungeonGenerator" type="Node" parent="Map"]
 script = ExtResource("4_hayen")
+
+[node name="FieldOfView" type="Node" parent="Map"]
+script = ExtResource("5_myaq4")
 
 [node name="Entities" type="Node2D" parent="."]
 
