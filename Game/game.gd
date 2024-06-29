@@ -19,6 +19,7 @@ func _ready() -> void:
 	map.update_fov(player.grid_position)
 
 
+
 func get_map_data() -> MapData:
 	return map.map_data
 

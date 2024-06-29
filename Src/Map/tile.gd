@@ -2,6 +2,12 @@ class_name Tile
 extends Sprite2D
 
 var _definition: TileDefinition
+var _grid_position: Vector2i
+
+var grid_position: Vector2i:
+	get:
+		return _grid_position
+
 
 var is_explored: bool = false:
 	set(value):
@@ -20,6 +26,7 @@ func _init(grid_position: Vector2i, tile_definition: TileDefinition) -> void:
 	visible = false
 	centered = false
 	position = Grid.grid_to_world(grid_position)
+	_grid_position = grid_position
 	set_tile_type(tile_definition)
 
 

@@ -2,10 +2,19 @@ class_name MapData
 extends RefCounted
 
 const tile_types = {
-	"floor": preload("res://Assets/definitions/tiles/tile_definition_floor.tres"),
-	"wall": preload("res://Assets/definitions/tiles/tile_definition_wall.tres"),
-	"wall_top": preload("res://Assets/definitions/tiles/tile_definition_wall_top.tres"),
-	"wall_void": preload("res://Assets/definitions/tiles/tile_definition_wall_void.tres"),
+	"floor": [
+		preload("res://Assets/definitions/tiles/tile_definition_floor.tres"),
+		preload("res://Assets/definitions/tiles/tile_definition_floor1.tres"),
+		preload("res://Assets/definitions/tiles/tile_definition_floor2.tres"),
+		],
+	"wall": [
+		preload("res://Assets/definitions/tiles/tile_definition_wall.tres"),
+		preload("res://Assets/definitions/tiles/tile_definition_wall1.tres"),
+		preload("res://Assets/definitions/tiles/tile_definition_wall2.tres"),
+		preload("res://Assets/definitions/tiles/tile_definition_wall3.tres"),
+		preload("res://Assets/definitions/tiles/tile_definition_wall4.tres"),
+		preload("res://Assets/definitions/tiles/tile_definition_wall5.tres"),
+		],
 }
 
 var width: int
@@ -16,13 +25,15 @@ func _init(map_width: int, map_height: int) -> void:
 	width = map_width
 	height = map_height
 	_setup_tiles()
+	
 
 func _setup_tiles() -> void:
 	tiles = []
 	for y in height:
 		for x in width:
 			var tile_position := Vector2i(x, y)
-			var tile := Tile.new(tile_position, tile_types.wall)
+			var wall = Rand.weighted_pick(tile_types.wall, [220,5,5,5,5,5])
+			var tile := Tile.new(tile_position, wall)
 			tiles.append(tile)
 
 func get_tile(grid_position: Vector2i) -> Tile:

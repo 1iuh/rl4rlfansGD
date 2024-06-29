@@ -37,7 +37,6 @@ func generate_dungeon(player: Entity) -> MapData:
 			continue
 		
 		_carve_room(dungeon, new_room)
-		_decorate_room(dungeon, new_room)
 		
 		if rooms.is_empty():
 			player.grid_position = new_room.get_center()
@@ -53,16 +52,11 @@ func _ready() -> void:
 	_rng.randomize()
 
 
-func _set_tile(dungeon: MapData, x: int, y: int, tile_type: TileDefinition) -> void:
-		var tile_position = Vector2i(x, y)
-		var tile: Tile = dungeon.get_tile(tile_position)
-		tile.set_tile_type(tile_type)
-
-
 func _carve_tile(dungeon: MapData, x: int, y: int) -> void:
 		var tile_position = Vector2i(x, y)
 		var tile: Tile = dungeon.get_tile(tile_position)
-		tile.set_tile_type(dungeon.tile_types.floor)
+		var floor = Rand.weighted_pick(dungeon.tile_types.floor,[200,5,5])
+		tile.set_tile_type(floor)
 
 
 func _carve_room(dungeon: MapData, room: Rect2i) -> void:
@@ -70,13 +64,6 @@ func _carve_room(dungeon: MapData, room: Rect2i) -> void:
 	for y in range(inner.position.y, inner.end.y + 1):
 		for x in range(inner.position.x, inner.end.x + 1):
 			_carve_tile(dungeon, x, y)
-
-
-func _decorate_room(dungeon: MapData, room: Rect2i) -> void:
-	var inner: Rect2i = room.grow(-1)
-	# 装上房顶
-	for x in range(inner.position.x, inner.end.x + 1):
-		_set_tile(dungeon, x, inner.position.y, dungeon.tile_types.wall_top)
 
 
 func _tunnel_horizontal(dungeon: MapData, y: int, x_start: int, x_end: int) -> void:
