@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=4 format=3 uid="uid://cul28x4a5h583"]
+
+[ext_resource type="Script" path="res://Src/Entities/entity_definition.gd" id="1_xfmad"]
+[ext_resource type="Texture2D" uid="uid://dg6kotssm76hq" path="res://Assets/Resources/ogre_idle_anim_f0.png" id="2_c12ru"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk508"]
+atlas = ExtResource("2_c12ru")
+region = Rect2(3.81089, 10.4192, 24.9721, 24.8235)
+
+[resource]
+script = ExtResource("1_xfmad")
+name = "Player"
+texture = SubResource("AtlasTexture_lk508")
+color = Color(1, 1, 1, 1)
+is_blocking_movement = true

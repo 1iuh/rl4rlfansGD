@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EntityDefinition" load_steps=4 format=3 uid="uid://c2mimeaffosdn"]
 
 [ext_resource type="Script" path="res://Src/Entities/entity_definition.gd" id="1_p65se"]
-[ext_resource type="Texture2D" uid="uid://v4b126ddw8fe" path="res://Assets/player_idle_f0.png" id="2_jwrnx"]
+[ext_resource type="Texture2D" uid="uid://v4b126ddw8fe" path="res://Assets/Resources/player_idle_f0.png" id="2_jwrnx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlo41"]
 atlas = ExtResource("2_jwrnx")
@@ -9,5 +9,7 @@ region = Rect2(-0.231171, 0.217857, 24.6574, 23.9392)
 
 [resource]
 script = ExtResource("1_p65se")
+name = "Player"
 texture = SubResource("AtlasTexture_qlo41")
 color = Color(1, 1, 1, 1)
+is_blocking_movement = true

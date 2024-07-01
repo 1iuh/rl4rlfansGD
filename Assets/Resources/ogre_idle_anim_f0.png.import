@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlbhav2vbgukv"
-path="res://.godot/imported/SuperBulb.png-fde7c9cc2b39be9e1c1b779a9b16ed20.ctex"
+uid="uid://dg6kotssm76hq"
+path="res://.godot/imported/ogre_idle_anim_f0.png-3ac06aac5448476a087ea0d2a0bc73db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SuperBulb.png"
-dest_files=["res://.godot/imported/SuperBulb.png-fde7c9cc2b39be9e1c1b779a9b16ed20.ctex"]
+source_file="res://Assets/Resources/ogre_idle_anim_f0.png"
+dest_files=["res://.godot/imported/ogre_idle_anim_f0.png-3ac06aac5448476a087ea0d2a0bc73db.ctex"]
 
 [params]
 

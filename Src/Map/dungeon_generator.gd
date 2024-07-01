@@ -10,11 +10,20 @@ extends Node
 @export var room_max_size: int = 10
 @export var room_min_size: int = 6
 
+@export_category("Monsters RNG")
+@export var max_monsters_per_room = 2
+
 var _rng := RandomNumberGenerator.new()
+
+const entity_types = {
+	"orc": preload("res://Assets/definitions/entities/entity_definition_orc.tres"),
+	"troll": preload("res://Assets/definitions/entities/entity_definition_troll.tres"),
+}
 
 
 func generate_dungeon(player: Entity) -> MapData:
 	var dungeon := MapData.new(map_width, map_height)
+	dungeon.entities.append(player)
 	
 	var rooms: Array[Rect2i] = []
 	
@@ -42,7 +51,9 @@ func generate_dungeon(player: Entity) -> MapData:
 			player.grid_position = new_room.get_center()
 		else:
 			_tunnel_between(dungeon, rooms.back().get_center(), new_room.get_center())
-		
+
+		_place_entities(dungeon, new_room)
+
 		rooms.append(new_room)
 	
 	return dungeon
@@ -51,12 +62,34 @@ func generate_dungeon(player: Entity) -> MapData:
 func _ready() -> void:
 	_rng.randomize()
 
+func _place_entities(dungeon: MapData, room: Rect2i) -> void:
+	var number_of_monsters: int = _rng.randi_range(0, max_monsters_per_room)
+	
+	for _i in number_of_monsters:
+		var x: int = _rng.randi_range(room.position.x + 1, room.end.x - 1)
+		var y: int = _rng.randi_range(room.position.y + 1, room.end.y - 1)
+		var new_entity_position := Vector2i(x, y)
+		
+		var can_place = true
+		for entity in dungeon.entities:
+			if entity.grid_position == new_entity_position:
+				can_place = false
+				break
+		
+		if can_place:
+			var new_entity: Entity
+			if _rng.randf() < 0.8:
+				new_entity = Entity.new(new_entity_position, entity_types.orc)
+			else:
+				new_entity = Entity.new(new_entity_position, entity_types.troll)
+			dungeon.entities.append(new_entity)
+
 
 func _carve_tile(dungeon: MapData, x: int, y: int) -> void:
 		var tile_position = Vector2i(x, y)
 		var tile: Tile = dungeon.get_tile(tile_position)
-		var floor = Rand.weighted_pick(dungeon.tile_types.floor,[200,5,5])
-		tile.set_tile_type(floor)
+		var floor_tile = Rand.weighted_pick(dungeon.tile_types.floor,[200,5,5])
+		tile.set_tile_type(floor_tile)
 
 
 func _carve_room(dungeon: MapData, room: Rect2i) -> void:
@@ -78,7 +111,6 @@ func _tunnel_vertical(dungeon: MapData, x: int, y_start: int, y_end: int) -> voi
 	var y_max: int = maxi(y_start, y_end)
 	for y in range(y_min, y_max + 1):
 		_carve_tile(dungeon, x, y)
-
 
 func _tunnel_between(dungeon: MapData, start: Vector2i, end: Vector2i) -> void:
 	if _rng.randf() < 0.5:

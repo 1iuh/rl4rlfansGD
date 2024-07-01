@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v4b126ddw8fe"
-path="res://.godot/imported/player_idle_f0.png-bdfb49ef528ea868b9dd5f91152bca64.ctex"
+uid="uid://dlbhav2vbgukv"
+path="res://.godot/imported/SuperBulb_tileset.png-217c5839cb1bd058179e67671c814714.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/player_idle_f0.png"
-dest_files=["res://.godot/imported/player_idle_f0.png-bdfb49ef528ea868b9dd5f91152bca64.ctex"]
+source_file="res://Assets/Resources/SuperBulb_tileset.png"
+dest_files=["res://.godot/imported/SuperBulb_tileset.png-217c5839cb1bd058179e67671c814714.ctex"]
 
 [params]
 
