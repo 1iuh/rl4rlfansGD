@@ -56,7 +56,8 @@ func generate_dungeon(player: Entity) -> MapData:
 		_place_entities(dungeon, new_room)
 
 		rooms.append(new_room)
-	
+
+	dungeon.setup_pathfinding()
 	return dungeon
 
 

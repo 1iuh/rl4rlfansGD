@@ -1,15 +1,28 @@
-[gd_resource type="Resource" script_class="EntityDefinition" load_steps=4 format=3 uid="uid://crbg02c8u5cvy"]
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=7 format=3 uid="uid://crbg02c8u5cvy"]
 
+[ext_resource type="Script" path="res://Src/Entities/Actors/Components/ComponentDefinitions/fighter_component_definition.gd" id="1_m3o8u"]
+[ext_resource type="Texture2D" uid="uid://mvynmgvqje3" path="res://Assets/Resources/default_death_texture.tres" id="1_opi2s"]
 [ext_resource type="Script" path="res://Src/Entities/entity_definition.gd" id="1_xbvf6"]
-[ext_resource type="Texture2D" uid="uid://dlfa4uyivu0n5" path="res://Assets/Resources/orc_warrior_idle_anim_f1.png" id="2_a2q6t"]
+[ext_resource type="Texture2D" uid="uid://dlfa4uyivu0n5" path="res://Assets/Resources/orc_warrior_idle_anim_f1.png" id="4_g85tp"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qlo41"]
-atlas = ExtResource("2_a2q6t")
-region = Rect2(-3.9005, 1.58676, 24.8235, 24.3775)
+[sub_resource type="Resource" id="Resource_kc4jo"]
+script = ExtResource("1_m3o8u")
+max_hp = 15
+power = 4
+defense = 1
+death_texture = ExtResource("1_opi2s")
+death_color = Color(0.545098, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hh8x"]
+atlas = ExtResource("4_g85tp")
+region = Rect2(-3, 4, 24, 24)
 
 [resource]
 script = ExtResource("1_xbvf6")
-name = "Player"
-texture = SubResource("AtlasTexture_qlo41")
+name = "orc"
+texture = SubResource("AtlasTexture_1hh8x")
 color = Color(1, 1, 1, 1)
 is_blocking_movement = true
+type = 2
+fighter_definition = SubResource("Resource_kc4jo")
+ai_type = 1

@@ -5,7 +5,6 @@ const player_definition: EntityDefinition = preload("res://Assets/definitions/en
 
 @onready var player: Entity
 @onready var input_handler: InputHandler = $InputHandler
-@onready var entities: Node2D = $Entities
 @onready var map: Map = $Map
 
 
@@ -30,7 +29,6 @@ func _physics_process(_delta: float) -> void:
 			map.update_fov(player.grid_position)
 
 func _handle_enemy_turns() -> void:
-	for entity in get_map_data().entities:
-		if entity == player:
-			continue
-		print("The %s wonders when it will get to take a real turn." % entity.get_entity_name())
+	for entity in get_map_data().get_actors():
+		if entity.is_alive() and entity != player:
+			entity.ai_component.perform()
