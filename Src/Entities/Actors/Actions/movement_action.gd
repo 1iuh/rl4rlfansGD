@@ -1,6 +1,9 @@
 class_name MovementAction
 extends ActionWithDirection
 
+func _init(_entity:Entity, _dx: int, _dy: int)->void:
+	super._init(_entity, _dx, _dy)
+	classname = "MovementAction"
 
 func perform() -> void:
 	var map_data: MapData = get_map_data()

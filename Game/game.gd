@@ -29,7 +29,12 @@ func _physics_process(_delta: float) -> void:
 	if action:
 		var previous_player_position: Vector2i = player.grid_position
 		action.perform()
-		_handle_enemy_turns()
+		#print(action.classname)
+		if action.classname == "ZoomAction":
+			pass
+		else: 
+			_handle_enemy_turns()
+		
 		if player.grid_position != previous_player_position:
 			map.update_fov(player.grid_position)
 

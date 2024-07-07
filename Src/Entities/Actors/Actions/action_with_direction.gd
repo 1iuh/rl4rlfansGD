@@ -7,6 +7,7 @@ var offset: Vector2i
 func _init(_entity: Entity, dx: int, dy: int) -> void:
 	super._init(_entity)
 	offset = Vector2i(dx, dy)
+	classname = "ActionWithDirection"
 
 func get_destination() -> Vector2i:
 	return entity.grid_position + offset
