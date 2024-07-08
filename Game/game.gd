@@ -13,7 +13,6 @@ const player_definition: EntityDefinition = preload("res://Assets/definitions/en
 
 func _ready() -> void:
 	player = Entity.new(null, Vector2i.ZERO, player_definition)
-	print("player init finish")
 	player_created.emit(player)
 	var camera: Camera2D = $Camera2D
 	remove_child(camera)
@@ -29,12 +28,7 @@ func _physics_process(_delta: float) -> void:
 	if action:
 		var previous_player_position: Vector2i = player.grid_position
 		action.perform()
-		#print(action.classname)
-		if action.classname == "ZoomAction":
-			pass
-		else: 
-			_handle_enemy_turns()
-		
+		_handle_enemy_turns()
 		if player.grid_position != previous_player_position:
 			map.update_fov(player.grid_position)
 

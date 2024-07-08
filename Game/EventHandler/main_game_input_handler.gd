@@ -1,6 +1,8 @@
 class_name MainGameInputHandler
 extends BaseInputHandler
 
+@export var camera:Camera2D
+
 const directions = {
 	"move_up": Vector2i.UP,
 	"move_down": Vector2i.DOWN,
@@ -15,17 +17,12 @@ const directions = {
 
 func get_action(player: Entity) -> Action:
 	var action: Action = null
-	var playercamera:Camera2D = null
-	
+
 	for direction in directions:
 		if Input.is_action_just_pressed(direction):
 			var offset: Vector2i = directions[direction]
 			action = BumpAction.new(player, offset.x, offset.y)
 			
-	for childnode in player.get_children():
-		if childnode.is_class("Camera2D"):
-			playercamera = childnode
-			break
 			
 	if Input.is_action_just_pressed("wait"):
 		action = WaitAction.new(player)
@@ -34,11 +31,12 @@ func get_action(player: Entity) -> Action:
 		action = EscapeAction.new(player)
 	
 	if Input.is_action_just_pressed("zoom_in"):
-		action = ZoomAction.new(player,playercamera,true,0.1)
-		#action = ZoomAction.new(player,player.get_child(2),true,0.1)
+		camera.zoom.x += 0.1
+		camera.zoom.y += 0.1
 		
 	if Input.is_action_just_pressed("zoom_out"):
-		action = ZoomAction.new(player,playercamera,false,0.1)
-		#action = ZoomAction.new(player,player.get_child(2),false,0.1)
+		camera.zoom.x -= 0.1
+		camera.zoom.y -= 0.1
+
 		
 	return action
