@@ -1,20 +1,30 @@
 class_name MapData
-extends RefCounted
+extends Node
+
+@onready var tilesNode: Node2D = $Tiles
+
+const floor_tiles = [
+	preload("res://Assets/definitions/tiles/tile_definition_floor.tres"),
+	preload("res://Assets/definitions/tiles/tile_definition_floor1.tres"),
+	preload("res://Assets/definitions/tiles/tile_definition_floor2.tres"),
+]
+
+const floor_tiles_weight = [200, 5, 5]
+
+const wall_tiles = [
+	preload("res://Assets/definitions/tiles/tile_definition_wall.tres"),
+	preload("res://Assets/definitions/tiles/tile_definition_wall1.tres"),
+	preload("res://Assets/definitions/tiles/tile_definition_wall2.tres"),
+	preload("res://Assets/definitions/tiles/tile_definition_wall3.tres"),
+	preload("res://Assets/definitions/tiles/tile_definition_wall4.tres"),
+	preload("res://Assets/definitions/tiles/tile_definition_wall5.tres"),
+]
+
+const wall_tiles_weight = [200, 5, 5, 5, 5]
 
 const tile_types = {
-	"floor": [
-		preload("res://Assets/definitions/tiles/tile_definition_floor.tres"),
-		preload("res://Assets/definitions/tiles/tile_definition_floor1.tres"),
-		preload("res://Assets/definitions/tiles/tile_definition_floor2.tres"),
-		],
-	"wall": [
-		preload("res://Assets/definitions/tiles/tile_definition_wall.tres"),
-		preload("res://Assets/definitions/tiles/tile_definition_wall1.tres"),
-		preload("res://Assets/definitions/tiles/tile_definition_wall2.tres"),
-		preload("res://Assets/definitions/tiles/tile_definition_wall3.tres"),
-		preload("res://Assets/definitions/tiles/tile_definition_wall4.tres"),
-		preload("res://Assets/definitions/tiles/tile_definition_wall5.tres"),
-		],
+	"floor": 0,
+	"wall": 1
 }
 
 const entity_pathfinding_weight = 10.0
@@ -27,21 +37,20 @@ var player: Entity
 var pathfinder: AStarGrid2D
 
 
-func _init(map_width: int, map_height: int, player: Entity) -> void:
+func _init(map_width: int, map_height: int, _player: Entity) -> void:
 	width = map_width
 	height = map_height
-	self.player = player
+	self.player = _player
 	entities = []
 	_setup_tiles()
 	
-
 func _setup_tiles() -> void:
 	tiles = []
 	for y in height:
 		for x in width:
 			var tile_position := Vector2i(x, y)
-			var wall = Rand.weighted_pick(tile_types.wall, [220,5,5,5,5,5])
-			var tile := Tile.new(tile_position, wall)
+			var tile := Tile.new(tile_position, tile_types.wall)
+			tilesNode.add_child(tile)
 			tiles.append(tile)
 
 func get_tile(grid_position: Vector2i) -> Tile:
@@ -99,7 +108,6 @@ func get_actors() -> Array[Entity]:
 		if entity.is_alive():
 			actors.append(entity)
 	return actors
-
 
 func get_actor_at_location(location: Vector2i) -> Entity:
 	for actor in get_actors():

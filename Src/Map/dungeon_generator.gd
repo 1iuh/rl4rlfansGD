@@ -88,10 +88,9 @@ func _place_entities(dungeon: MapData, room: Rect2i) -> void:
 
 
 func _carve_tile(dungeon: MapData, x: int, y: int) -> void:
-		var tile_position = Vector2i(x, y)
-		var tile: Tile = dungeon.get_tile(tile_position)
-		var floor_tile = Rand.weighted_pick(dungeon.tile_types.floor,[200,5,5])
-		tile.set_tile_type(floor_tile)
+	var tile_position = Vector2i(x, y)
+	var tile: Tile = dungeon.get_tile(tile_position)
+	tile.set_tile_type(dungeon.tile_types.floor)
 
 
 func _carve_room(dungeon: MapData, room: Rect2i) -> void:
