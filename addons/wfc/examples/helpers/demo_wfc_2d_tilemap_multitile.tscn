@@ -25,7 +25,7 @@ layers = Array[int]([])
 use_builtin_probabilities = true
 probability_meta_key = "wfc_probability"
 
-[sub_resource type="Resource" id="Resource_rfxqi"]
+[sub_resource type="Resource" id="Resource_fu73h"]
 script = ExtResource("4_81wi2")
 mapper = SubResource("Resource_wtrul")
 tile_size = Vector2i(3, 3)
@@ -36,7 +36,7 @@ probability_meta_key = "wfc_probability"
 
 [sub_resource type="Resource" id="Resource_pa1tk"]
 script = ExtResource("5_5pb0u")
-mapper = SubResource("Resource_rfxqi")
+mapper = SubResource("Resource_fu73h")
 complete_matrices = true
 axes = Array[Vector2i]([Vector2i(0, 1), Vector2i(1, 0)])
 axis_matrices = Array[Resource("res://addons/wfc/utils/bitmatrix.gd")]([])
@@ -75,9 +75,11 @@ solver_settings = SubResource("Resource_30nyt")
 render_intermediate_results = true
 
 [node name="progressIndicator" parent="." node_paths=PackedStringArray("generator") instance=ExtResource("6_673hp")]
+visible = false
 generator = NodePath("../WFC2DGenerator")
 
 [node name="sudoku_demo" parent="." instance=ExtResource("8_mtuoy")]
+visible = false
 offset_left = 182.0
 offset_top = 217.0
 offset_right = 182.0

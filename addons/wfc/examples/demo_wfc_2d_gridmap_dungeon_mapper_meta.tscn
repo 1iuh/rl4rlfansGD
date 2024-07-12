@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://o4r81poakaef"]
+[gd_scene load_steps=18 format=3 uid="uid://o4r81poakaef"]
 
 [ext_resource type="MeshLibrary" uid="uid://310b3aggjq0d" path="res://addons/wfc/examples/assets/kenny-nature-kit/meshlib.meshlib" id="1_qlt73"]
 [ext_resource type="Script" path="res://addons/wfc/nodes/generator_2d.gd" id="2_eek3p"]
@@ -31,10 +31,16 @@ mesh_name = "GroundPathOpen"
 meta_name = "wfc_dungeon_road"
 meta_values = [true]
 
+[sub_resource type="Resource" id="Resource_dcx4n"]
+script = ExtResource("3_bv2q6")
+mesh_name = ""
+meta_name = ""
+meta_values = []
+
 [sub_resource type="Resource" id="Resource_tnr82"]
 script = ExtResource("4_ja2nq")
 base_point = Vector3i(0, 0, 0)
-mesh_meta = Array[ExtResource("3_bv2q6")]([SubResource("Resource_4tapn"), SubResource("Resource_u74ea")])
+mesh_meta = Array[ExtResource("3_bv2q6")]([SubResource("Resource_4tapn"), SubResource("Resource_u74ea"), SubResource("Resource_dcx4n")])
 x_axis = 0
 y_axis = 2
 unused_axis = 1
@@ -81,7 +87,6 @@ classes_map = NodePath("")
 script = SubResource("GDScript_f3n0e")
 
 [node name="sample" type="GridMap" parent="."]
-visible = false
 mesh_library = ExtResource("1_qlt73")
 cell_size = Vector3(1, 1, 1)
 data = {

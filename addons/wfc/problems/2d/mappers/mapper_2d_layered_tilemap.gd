@@ -42,6 +42,7 @@ func _ensure_tile_map(node: Node) -> TileMap:
 	return node as TileMap
 
 func _read_cell_attrs(map: TileMap, coords: Vector2i) -> Array[Vector4i]:
+	#print("ReadingTileMap2cells,tilemap=",map.name,",coords=",coords)
 	var cells: Array[Vector4i] = []
 	for i in range(len(layers)):
 		var layer := layers[i]
@@ -89,7 +90,7 @@ func read_cell(map_: Node, coords: Vector2i) -> int:
 	var map: TileMap = _ensure_tile_map(map_)
 	var attrs: Array[Vector4i] = _read_cell_attrs(map, coords)
 
-	# print('read ', coords, ' -> ', attrs, ' -> ', attrs_to_id.get(attrs, -1))
+	
 
 	return attrs_to_id.get(attrs, -1)
 

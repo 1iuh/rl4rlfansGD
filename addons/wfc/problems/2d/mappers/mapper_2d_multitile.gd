@@ -83,16 +83,16 @@ func learn_from(map: Node):
 	assert(tile_size.x > 1 or tile_size.y > 1)
 
 	mapper.learn_from(map)
-
 	var used_rect := get_used_rect(map)
 	var sub_tiles_per_tile: int = tile_size.x * tile_size.y
 
 	for x in range(used_rect.position.x, used_rect.end.x):
 		for y in range(used_rect.position.y, used_rect.end.y):
 			var arr := _read_array_at(map, Vector2i(x, y))
+			
 			if _is_readable_tile(arr) and (arr not in tiles_to_id):
 				tiles_to_id[arr] = tiles_to_id.size()
-
+				
 func _div_round_up(a: int, b: int):
 	var res: int = a / b
 

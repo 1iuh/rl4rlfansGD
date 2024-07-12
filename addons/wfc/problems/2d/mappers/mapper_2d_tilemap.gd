@@ -30,16 +30,16 @@ func _read_cell_attrs(map: TileMap, coords: Vector2i) -> Vector4i:
 
 func learn_from(map_: Node):
 	var map: TileMap = _ensure_tile_map(map_)
-
 	assert(tile_set == null or tile_set == map.tile_set)
 	tile_set = map.tile_set
 
 	for cell in map.get_used_cells(layer):
 		var cell_attrs: Vector4i = _read_cell_attrs(map, cell)
-
 		if cell_attrs not in attrs_to_id:
 			attrs_to_id[cell_attrs] = attrs_to_id.size()
-
+			
+			to_string()
+	
 	id_to_attrs.clear()
 
 
@@ -60,8 +60,6 @@ func read_cell(map_: Node, coords: Vector2i) -> int:
 	var map: TileMap = _ensure_tile_map(map_)
 
 	var attrs: Vector4i = _read_cell_attrs(map, coords)
-
-	#print('read ', coords, ' -> ', attrs, ' -> ', attrs_to_id.get(attrs, -1))
 
 	return attrs_to_id.get(attrs, -1)
 
