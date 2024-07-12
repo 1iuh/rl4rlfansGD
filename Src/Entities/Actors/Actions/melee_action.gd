@@ -1,9 +1,6 @@
 class_name MeleeAction
 extends ActionWithDirection
 
-func _init(_entity:Entity, _dx: int, _dy: int)->void:
-	super._init(_entity, _dx, _dy)
-	classname = "MeleeAction"
 
 func perform() -> void:
 	var target: Entity = get_target_actor()
