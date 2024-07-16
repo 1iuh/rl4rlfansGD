@@ -1,11 +1,7 @@
-[gd_resource type="AtlasTexture" load_steps=3 format=3 uid="uid://mvynmgvqje3"]
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://mvynmgvqje3"]
 
-[ext_resource type="Texture2D" uid="uid://glgyw023spht" path="res://Assets/Resources/Tiles and Walls 48x48.png" id="1_wmfpr"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0r1sy"]
-atlas = ExtResource("1_wmfpr")
-region = Rect2(674, 244, 44, 43)
+[ext_resource type="Texture2D" uid="uid://cpp0d2j6knwah" path="res://Assets/Resources/SuperBulb_monsters.png" id="1_yd5ef"]
 
 [resource]
-atlas = SubResource("AtlasTexture_0r1sy")
-region = Rect2(10, 8, 24, 24)
+atlas = ExtResource("1_yd5ef")
+region = Rect2(0, 24, 24, 24)

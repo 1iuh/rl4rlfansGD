@@ -1,21 +1,21 @@
 [gd_resource type="Resource" script_class="EntityDefinition" load_steps=7 format=3 uid="uid://c2mimeaffosdn"]
 
+[ext_resource type="Texture2D" uid="uid://mvynmgvqje3" path="res://Assets/Resources/default_death_texture.tres" id="1_kq3vh"]
 [ext_resource type="Script" path="res://Src/Entities/entity_definition.gd" id="1_p65se"]
 [ext_resource type="Script" path="res://Src/Entities/Actors/Components/ComponentDefinitions/fighter_component_definition.gd" id="1_tghjd"]
-[ext_resource type="Texture2D" uid="uid://mvynmgvqje3" path="res://Assets/Resources/default_death_texture.tres" id="1_wopvp"]
-[ext_resource type="Texture2D" uid="uid://cpp0d2j6knwah" path="res://Assets/Resources/SuperBulb_monsters.png" id="4_7jjge"]
+[ext_resource type="Texture2D" uid="uid://v4b126ddw8fe" path="res://Assets/Resources/player_idle_f0.png" id="2_jwrnx"]
 
 [sub_resource type="Resource" id="Resource_12ows"]
 script = ExtResource("1_tghjd")
 max_hp = 30
 power = 5
 defense = 2
-death_texture = ExtResource("1_wopvp")
+death_texture = ExtResource("1_kq3vh")
 death_color = Color(0.545098, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlo41"]
-atlas = ExtResource("4_7jjge")
-region = Rect2(0.401016, 0.205591, 24.2683, 24.0421)
+atlas = ExtResource("2_jwrnx")
+region = Rect2(-0.231171, 0.217857, 24.6574, 23.9392)
 
 [resource]
 script = ExtResource("1_p65se")
