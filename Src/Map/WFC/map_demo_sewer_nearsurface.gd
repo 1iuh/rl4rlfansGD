@@ -6,9 +6,10 @@ var eraseID:Vector2i = Vector2i(0,1)
 @export var target:TileMap
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$generator/Sample.hide()
-	$generator/Sample_negative.hide()
-	$generator/Target.show()
+	$generator/sample.hide()
+	$generator/sample_negative.hide()
+	$generator/target.hide()
+	$generator/demo_map.show()
 	$generator.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
