@@ -19,7 +19,7 @@ region = Rect2(0.742355, 46.8416, 24.9111, 24.9111)
 
 [resource]
 script = ExtResource("1_xbvf6")
-name = "orc"
+name = "Militia"
 texture = SubResource("AtlasTexture_1hh8x")
 color = Color(1, 1, 1, 1)
 is_blocking_movement = true

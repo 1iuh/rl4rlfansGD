@@ -19,7 +19,7 @@ region = Rect2(23.3362, 47.4209, 24.3318, 24.6215)
 
 [resource]
 script = ExtResource("1_xfmad")
-name = "Player"
+name = "Soldier"
 texture = SubResource("AtlasTexture_lk508")
 color = Color(1, 1, 1, 1)
 is_blocking_movement = true

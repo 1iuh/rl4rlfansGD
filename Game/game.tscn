@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://8emh2k4favtv"]
+[gd_scene load_steps=15 format=3 uid="uid://8emh2k4favtv"]
 
 [ext_resource type="Script" path="res://Game/game.gd" id="1_w664i"]
 [ext_resource type="Script" path="res://Game/EventHandler/input_handler.gd" id="2_hmlou"]
@@ -6,9 +6,12 @@
 [ext_resource type="Script" path="res://Src/Map/map.gd" id="3_h1hry"]
 [ext_resource type="Script" path="res://Game/EventHandler/game_over_input_handler.gd" id="3_ivskr"]
 [ext_resource type="Script" path="res://Src/Map/dungeon_generator.gd" id="4_hayen"]
+[ext_resource type="Script" path="res://Game/EventHandler/history_viewer_input_handler.gd" id="5_i0bul"]
 [ext_resource type="Script" path="res://Src/Map/field_of_view.gd" id="5_myaq4"]
 [ext_resource type="Script" path="res://Src/Map/roof.gd" id="6_lwgku"]
 [ext_resource type="Script" path="res://Src/GUI/hp_display.gd" id="9_mr5oc"]
+[ext_resource type="Script" path="res://Src/GUI/mouseover_checker.gd" id="10_nfq1b"]
+[ext_resource type="Script" path="res://Src/GUI/message_log.gd" id="11_dnoly"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_21b5b"]
 
@@ -66,6 +69,11 @@ camera = NodePath("../../Camera2D")
 [node name="GameOverInputHandler" type="Node" parent="VBoxContainer/SubViewportContainer/SubViewport/Game/InputHandler"]
 script = ExtResource("3_ivskr")
 
+[node name="HistoryViewerInputHandler" type="Node" parent="VBoxContainer/SubViewportContainer/SubViewport/Game/InputHandler"]
+script = ExtResource("5_i0bul")
+messages_panel_path = NodePath("../../../../../InfoBar/MessagesPanel")
+message_log_path = NodePath("../../../../../InfoBar/MessagesPanel/MessageLog")
+
 [node name="Map" type="Node2D" parent="VBoxContainer/SubViewportContainer/SubViewport/Game"]
 script = ExtResource("3_h1hry")
 
@@ -81,6 +89,9 @@ script = ExtResource("6_lwgku")
 [node name="Tiles" type="Node2D" parent="VBoxContainer/SubViewportContainer/SubViewport/Game/Map"]
 
 [node name="Entities" type="Node2D" parent="VBoxContainer/SubViewportContainer/SubViewport/Game/Map"]
+
+[node name="MouseoverChecker" type="Node2D" parent="VBoxContainer/SubViewportContainer/SubViewport/Game/Map"]
+script = ExtResource("10_nfq1b")
 
 [node name="Camera2D" type="Camera2D" parent="VBoxContainer/SubViewportContainer/SubViewport/Game"]
 zoom = Vector2(2, 2)
@@ -107,10 +118,26 @@ layout_mode = 2
 [node name="HpLabel" type="Label" parent="VBoxContainer/InfoBar/StatsPanel/VBoxContainer/HpDisplay"]
 layout_mode = 2
 
+[node name="MouseoverLabel" type="Label" parent="VBoxContainer/InfoBar/StatsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
 [node name="MessagesPanel" type="PanelContainer" parent="VBoxContainer/InfoBar"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_isfyi")
 
+[node name="MessageLog" type="ScrollContainer" parent="VBoxContainer/InfoBar/MessagesPanel"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+script = ExtResource("11_dnoly")
+
+[node name="MessageList" type="VBoxContainer" parent="VBoxContainer/InfoBar/MessagesPanel/MessageLog"]
+editor_description = "
+"
+layout_mode = 2
+size_flags_horizontal = 3
+
 [connection signal="player_created" from="VBoxContainer/SubViewportContainer/SubViewport/Game" to="VBoxContainer/InfoBar/StatsPanel/VBoxContainer/HpDisplay" method="initialize"]
+[connection signal="entities_focussed" from="VBoxContainer/SubViewportContainer/SubViewport/Game/Map/MouseoverChecker" to="VBoxContainer/InfoBar/StatsPanel/VBoxContainer/MouseoverLabel" method="set_text"]
