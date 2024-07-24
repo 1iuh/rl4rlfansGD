@@ -1,6 +1,8 @@
 class_name MapData
 extends RefCounted
 
+signal entity_placed(entity)
+
 const tile_types = {
 	"floor": [
 		preload("res://Assets/definitions/tiles/tile_definition_floor.tres"),
@@ -100,9 +102,15 @@ func get_actors() -> Array[Entity]:
 			actors.append(entity)
 	return actors
 
-
 func get_actor_at_location(location: Vector2i) -> Entity:
 	for actor in get_actors():
 		if actor.grid_position == location:
 			return actor
 	return null
+
+func get_items() -> Array[Entity]:
+	var items: Array[Entity] = []
+	for entity in entities:
+		if entity.consumable_component != null:
+			items.append(entity)
+	return items

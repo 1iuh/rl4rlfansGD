@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EntityDefinition" load_steps=6 format=3 uid="uid://b0ucwr6lnno2x"]
+
+[ext_resource type="Script" path="res://Src/Entities/Actors/Components/ComponentDefinitions/healing_consumable_component_definition.gd" id="1_8j8rc"]
+[ext_resource type="Script" path="res://Src/Entities/entity_definition.gd" id="2_ittvn"]
+[ext_resource type="Texture2D" uid="uid://xb6d3thy2q7y" path="res://Assets/Resources/SuperBulb_tileset nobg.png" id="3_yuivk"]
+
+[sub_resource type="Resource" id="Resource_0ciwa"]
+script = ExtResource("1_8j8rc")
+healing_amount = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgobu"]
+atlas = ExtResource("3_yuivk")
+region = Rect2(24, 120, 24, 24)
+
+[resource]
+script = ExtResource("2_ittvn")
+name = "Health Potion"
+texture = SubResource("AtlasTexture_tgobu")
+color = Color(1, 1, 1, 1)
+is_blocking_movement = false
+type = 1
+ai_type = 0
+consumable_definition = SubResource("Resource_0ciwa")
+inventory_capacity = 0

@@ -23,7 +23,6 @@ func get_action(player: Entity) -> Action:
 			var offset: Vector2i = directions[direction]
 			action = BumpAction.new(player, offset.x, offset.y)
 			
-			
 	if Input.is_action_just_pressed("wait"):
 		action = WaitAction.new(player)
 	
@@ -32,6 +31,9 @@ func get_action(player: Entity) -> Action:
 	
 	if Input.is_action_just_pressed("quit") or Input.is_action_just_pressed("ui_back"):
 		action = EscapeAction.new(player)
+
+	if Input.is_action_just_pressed("pickup"):
+		action = PickupAction.new(player)	
 	
 	if Input.is_action_just_pressed("zoom_in"):
 		camera.zoom.x += 0.1

@@ -17,6 +17,7 @@ var map_data: MapData
 
 func generate(player: Entity) -> void:
 	map_data = dungeon_generator.generate_dungeon(player)
+	map_data.entity_placed.connect(entities.add_child)
 	roof.init(map_width, map_width)
 	_place_tiles()
 	_place_entities()

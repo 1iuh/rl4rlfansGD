@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b04kmxk3dvdl3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cemml"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_up7gr"]
+bg_color = Color(1, 1, 1, 1)
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="InventoryMenuButton" type="Button"]
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cemml")
+theme_override_styles/hover = SubResource("StyleBoxFlat_up7gr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_up7gr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cemml")
+theme_override_styles/focus = SubResource("StyleBoxFlat_up7gr")
+action_mode = 0
+shortcut_feedback = false
+alignment = 0
